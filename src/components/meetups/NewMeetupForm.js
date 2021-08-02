@@ -3,7 +3,7 @@ import { useRef } from "react";
 import Card from "../ui/Card";
 import classes from "./NewMeetupForm.module.css";
 
-const NewMeetupForm = () => {
+const NewMeetupForm = (props) => {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -24,12 +24,12 @@ const NewMeetupForm = () => {
       description: enteredDescription,
     };
 
-    console.log(meetupData)
+    props.onAddMeetup(meetupData);
   };
 
   return (
     <Card>
-      <form class={classes.form} onSubmit={submitHandler}>
+      <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="title">Meetup Title</label>
           <input type="text" required id="title" ref={titleInputRef} />
